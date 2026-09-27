@@ -1,0 +1,208 @@
+/*
+  _  _______     ___    ____  _  _____  _ ____   __        ___ __   ______    _    ____     ____ ___  _   _ _____ ___ ____
+ | |/ / _ \ \   / / \  / ___|| |/ / _ \( ) ___|  \ \      / / \\ \ / / __ )  / \  |  _ \   / ___/ _ \| \ | |  ___|_ _/ ___|
+ | ' / | | \ \ / / _ \ \___ \| ' / | | |/\___ \   \ \ /\ / / _ \\ V /|  _ \ / _ \ | |_) | | |  | | | |  \| | |_   | | |  _
+ | . \ |_| |\ V / ___ \ ___) | . \ |_| |  ___) |   \ V  V / ___ \| | | |_) / ___ \|  _ <  | |__| |_| | |\  |  _|  | | |_| |
+ |_|\_\___/  \_/_/   \_\____/|_|\_\___/  |____/     \_/\_/_/   \_\_| |____/_/   \_\_| \_\  \____\___/|_| \_|_|   |___\____|
+
+ from : https://github.com/kovasko/hyprland-dotfiles
+                                                                                                                                                                                                                          */
+
+{
+
+  /* GLOBAL SETTINGS */
+
+  "layer": "bottom",
+  "position": "top",
+  "height": 38,
+  "spacing": 2,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+
+  /* MODULES POSITON */
+
+  "modules-left": [
+	  "custom/launcher",
+	  "hyprland/workspaces",
+	  "custom/cava",
+	  "tray",
+	  "custom/notification",
+	  "custom/clipboard",
+	  "custom/screenshot",
+	  "custom/colorpicker",
+	  "hyprland/window"
+  ],
+
+  "modules-center": ["mpris"],
+
+  "modules-right": [
+    "pulseaudio",
+    "memory",
+    "cpu",
+    "bluetooth",
+    "clock",
+    "clock#simpleclock",
+    "battery",
+    "custom/power"
+  ],
+
+  /* MODULES */
+
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} {dynamic}",
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    "max-length": 20
+
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 20
+  },
+
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10
+  },
+
+  "clock#simpleclock": {
+    "tooltip": false,
+    "format": " {:%H:%M}"
+  },
+
+  "clock": {
+    "format": " {:L%a %d %b}",
+    "calendar": {
+      "format": {
+        "days": "<span weight='normal'>{}</span>",
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>"
+        },
+      "mode": "month",
+      "mode-mon-col": 1,
+      "on-scroll": 1
+    },
+    "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>"
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true,
+    "interval": 1
+  },
+
+  "memory": {
+    "format": " {used:0.1f}Gi"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}{volume}%",
+    "format-muted": "  muted",
+    "format-icons": {
+	    "headphone": "",
+	    "default": [" ", " ", " "]
+	    },
+    "on-click": "pavucontrol"
+    
+  },
+
+"bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-on": "",
+    "format-connected": " {num_connections}",
+    "tooltip-format": "Bluetooth : {status}",
+    "tooltip-format-connected": "Connecté à :\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "• {device_alias} ({device_address})",
+    "on-click": "blueberry"
+  },
+
+ "battery": {
+   "states": {
+      	"warning": 30,
+       	"critical": 15
+      },
+       	"format": "{icon} {capacity}%",
+       	"format-charging": " {capacity}%",
+       	"format-plugged": "{capacity}%",
+       	"format-alt": "{time} {icon}",
+       	"format-full": " {capacity}%",
+	"format-icons": ["", "", "", "", ""]	
+	},
+
+  /* CUSTOM MODULES */
+
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "$HOME/.config/rofi/scripts/powermenu.sh",
+    "format": "⏻"
+  },
+
+  "custom/cava": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/cava.sh"
+  },
+
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='14pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+      },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "custom/clipboard": {
+	  "format": "",
+	  "on-click": "$HOME/.config/rofi/scripts/clipboard.sh"
+  },
+
+  "custom/screenshot": {
+	  "format": "󰹑",
+	  "on-click": "hyprshot -m region"
+  },
+
+  "custom/colorpicker": {
+      "format": "" ,
+      "on-click": "hyprpicker -a"
+
+  },
+
+  "custom/launcher": {
+      "tooltip": false,
+      "on-click": "rofi -show drun",
+      "format": ""
+  },
+}

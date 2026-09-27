@@ -1,0 +1,84 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "modules": [
+	    "title",
+	    "separator",
+	    {
+		    "type": "os",
+		    "key": "󰣇 ",
+		    "keyColor": "cyan"
+	    },
+	    {
+		    "type": "kernel",
+		    "key": " ",
+		    "keyColor": "cyan"
+	    },
+	    {
+		    "type": "uptime",
+		    "key": " ",
+		    "keyColor": "cyan"
+	    },
+	    {
+		    "type": "packages",
+		    "key": "󰮯 ",
+		    "keyColor": "cyan"
+	    },
+	    {
+		    "type": "terminal",
+		    "key": " ",
+		    "keyColor": "cyan"
+	    },
+	    {
+		    "type": "host",
+		    "key": " ",
+		    "keyColor": "magenta"
+	    },
+	    {
+		    "type": "cpu",
+		    "key": " ",
+		    "keyColor": "magenta"
+	    },
+	    {
+		    "type": "gpu",
+		    "key": " ",
+		    "keyColor": "magenta"
+	    },
+	    {
+		    "type": "memory",
+		    "key": " ",
+		    "keyColor": "magenta"
+	    },
+	    {
+		    "type": "disk",
+		    "key": " ",
+		    "keyColor": "magenta"
+	    },
+	    {
+		    "type": "battery",
+		    "key": " ",
+		    "keyColor": "green"
+	    },
+	    {
+		    "type": "poweradapter",
+		    "key":"󱐥 ",
+		    "keyColor": "green"
+	    },
+	    {
+		    "type": "localip",
+		    "key": "󱦂 ",
+		    "keyColor": "blue"
+	    },
+	    {
+		    "type": "publicip",
+		    "key": " ",
+		    "keyColor": "blue"
+	    },
+	    {
+			"type": "uptime",
+			"key": "󰔛 ",
+			"keyColor": "blue"
+	    },
+    "break",
+    "colors"
+  ]
+}
