@@ -1,20 +1,15 @@
-
 ------------------
 ---- MONITORS ----
 ------------------
 
+-- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-	output   = "DP-2",
-	mode     = "1920x1080@144",
-	position = "0x0",
-	scale    = "1",
+    output   = "",
+    mode     = "preferred",
+    position = "auto",
+    scale    = "1",
 })
-hl.monitor({
-	output   = "HDMI-A-1",
-	mode     = "1920x1080@60",
-	position = "1920x0",
-	scale    = "1",
-})
+
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -22,7 +17,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local fileManager = "thunar"
 local menu        = "rofi -show drun"
 
 
@@ -30,14 +25,12 @@ local menu        = "rofi -show drun"
 ---- AUTOSTART ----
 -------------------
 
- hl.on("hyprland.start", function () 
-   hl.exec_cmd("discord")
-   hl.exec_cmd("swaync")
-   hl.exec_cmd("nm-applet")
-   hl.exec_cmd("wl-paste --watch cliphist store")
-   hl.exec_cmd("waybar & waypaper --restore")
+ hl.on("hyprland.start", function ()
+ hl.exec_cmd("swaync")
+ hl.exec_cmd("nm-applet")
+ hl.exec_cmd("wl-paste --watch cliphist store")
+ hl.exec_cmd("waybar & waypaper --restore")
  end)
-
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -45,7 +38,7 @@ local menu        = "rofi -show drun"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("HYPRSHOT_DIR", "/home/kovasko/Images/Screenshots/")
+hl.env("HYPRSHOT_DIR", "Pictures/Screenshots")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -71,52 +64,52 @@ hl.env("HYPRSHOT_DIR", "/home/kovasko/Images/Screenshots/")
 -----------------------
 
 hl.config({
-	general = {
-		gaps_in  = 5,
-		gaps_out = 20,
+    general = {
+        gaps_in  = 5,
+        gaps_out = 20,
 
-		border_size = 2,
+        border_size = 2,
 
-		col = {
-			active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-			inactive_border = "rgba(595959aa)",
-		},
+        col = {
+            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+          inactive_border = "rgba(595959aa)",
+        },
 
-		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-		resize_on_border = false,
+        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+        resize_on_border = false,
 
-		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-		allow_tearing = false,
+        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+        allow_tearing = false,
 
-		layout = "dwindle",
-	},
+        layout = "dwindle",
+    },
 
-	decoration = {
-		rounding       = 10,
-		rounding_power = 2,
+    decoration = {
+        rounding       = 10,
+        rounding_power = 2,
 
-		-- Change transparency of focused and unfocused windows
-		active_opacity   = 1.0,
-		inactive_opacity = 1.0,
+        -- Change transparency of focused and unfocused windows
+        active_opacity   = 1.0,
+        inactive_opacity = 1.0,
 
-		shadow = {
-			enabled      = true,
-			range        = 4,
-			render_power = 3,
-			color        = 0xee1a1a1a,
-		},
+        shadow = {
+            enabled      = true,
+            range        = 4,
+            render_power = 3,
+            color        = 0xee1a1a1a,
+        },
 
-		blur = {
-			enabled   = true,
-			size      = 3,
-			passes    = 3,
-			vibrancy  = 0.1696,
-		},
-	},
+        blur = {
+            enabled   = true,
+          size      = 3,
+          passes    = 3,
+          vibrancy  = 0.1696,
+        },
+    },
 
-	animations = {
-		enabled = true,
-	},
+    animations = {
+        enabled = true,
+    },
 })
 
 hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1}    } })
@@ -146,32 +139,33 @@ hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
 hl.config({
-	dwindle = {
-		preserve_split = true, -- You probably want this
-	},
+    dwindle = {
+        preserve_split = true, -- You probably want this
+    },
 })
 
 hl.config({
-	master = {
-		new_status = "master",
-	},
+    master = {
+        new_status = "master",
+    },
 })
 
 hl.config({
-	scrolling = {
-		fullscreen_on_one_column = true,
-	},
+    scrolling = {
+        fullscreen_on_one_column = true,
+    },
 })
+
 
 ----------------
 ----  MISC  ----
 ----------------
 
 hl.config({
-	misc = {
-		force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
-	},
+    misc = {
+        force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+    },
 })
 
 
@@ -180,8 +174,8 @@ hl.config({
 ---------------
 
 hl.config({
-	input = {
-	kb_layout  = "fr",
+    input = {
+        kb_layout  = "us",
         kb_variant = "",
         kb_model   = "",
         kb_options = "",
@@ -210,7 +204,6 @@ hl.device({
     sensitivity = -0.5,
 })
 
-
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
@@ -220,18 +213,15 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", function()
-	hl.dispatch(hl.dsp.window.float({ action = "toggle"}))
-	hl.dispatch(hl.dsp.window.resize({ x = 800, y = 760, relative =false  }))
-	hl.dispatch(hl.dsp.window.center())
-	end)
+    hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+    hl.dispatch(hl.dsp.window.resize({ x = 800, y = 760, relative = false }))
+    hl.dispatch(hl.dsp.window.center())
+end)
 
--- Basculer la fenêtre active en plein écran
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
@@ -242,25 +232,12 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
--- Configuration des touches pour la rangée supérieure d'un clavier AZERTY (1 à 0)
-local azerty_keys = {
-    "ampersand",  -- 1
-    "eacute",     -- 2
-    "quotedbl",   -- 3
-    "apostrophe", -- 4
-    "parenleft",  -- 5
-    "minus",      -- 6
-    "egrave",     -- 7
-    "underscore", -- 8
-    "ccedilla",   -- 9
-    "agrave"      -- 0 (Workspace 10)
-}
-
--- Switch workspaces with mainMod + [&, é, ", ...]
--- Move active window to a workspace with mainMod + SHIFT + [&, é, ", ...]
-for i, key in ipairs(azerty_keys) do
-    hl.bind(mainMod .. " + " .. key,         hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+-- Switch workspaces with mainMod + [0-9]
+-- Move active window to a workspace with mainMod + SHIFT + [0-9]
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
@@ -346,17 +323,16 @@ hl.window_rule({
     float = true,
 })
 
--- Set blur and Opacity for apps
-hl.layer_rule({match = { namespace = "rofi" }	, blur = true })
-hl.window_rule({match = { class = "kitty" }	, opacity = 0.9 })
-hl.window_rule({match = { class = "waybar" }	, opacity = 0.7 })
-hl.window_rule({match = { class = "thunar" }	, opacity = 0.9 })
 
--- Wokspace by screen
-hl.workspace_rule({ workspace = "1", monitor = "DP-2" })
-hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "3", monitor = "DP-2" })
-hl.workspace_rule({ workspace = "4", monitor = "DP-2" })
-hl.workspace_rule({ workspace = "5", monitor = "DP-2" })
-hl.workspace_rule({ workspace = "6", monitor = "DP-2" })
-hl.workspace_rule({ workspace = "7", monitor = "DP-2" })
+
+--Set Blur and Opacity for apps
+
+hl.layer_rule({ match = { namespace = "rofi" }, blur = true })
+--hl.layer_rule({ match = { namespace = "swaync" }, blur = true })
+
+
+hl.window_rule({match = { class = "kitty" }, opacity = "0.9" ,})
+hl.window_rule({match = { class = "waybar" }, opacity = "0.7" ,})
+hl.window_rule({match = { class = "thunar" }, opacity = "0.9" ,})
+--hl.window_rule({match = { class = "firefox" }, opacity = "1" ,})
+--hl.window_rule({match = { namespace = "blueberry" }, opacity = "0.9" ,})

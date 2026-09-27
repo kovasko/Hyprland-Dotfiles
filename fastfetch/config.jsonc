@@ -63,7 +63,7 @@
 		    "key":"󱐥 ",
 		    "keyColor": "green"
 	    },
-	    {
+/*	    {
 		    "type": "localip",
 		    "key": "󱦂 ",
 		    "keyColor": "blue"
@@ -72,12 +72,7 @@
 		    "type": "publicip",
 		    "key": " ",
 		    "keyColor": "blue"
-	    },
-	    {
-			"type": "uptime",
-			"key": "󰔛 ",
-			"keyColor": "blue"
-	    },
+	    },*/
     "break",
     "colors"
   ]
